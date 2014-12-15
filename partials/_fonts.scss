@@ -1,0 +1,36 @@
+/* _fonts.scss */
+
+@mixin fontFace($family, $src, $weight, $style) {
+  @font-face {
+    font-family: $family;
+      src: url('#{$src}.eot');
+      src: url('#{$src}.eot?#iefix') format('embedded-opentype'),
+           url('#{$src}.woff') format('woff'),
+           url('#{$src}.ttf') format('truetype'),
+           url('#{$src}.svg##{$family}') format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+  // Chrome for Windows rendering fix: http://www.adtrak.co.uk/blog/font-face-chrome-rendering/
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @font-face {
+      font-family: $family;
+        src: url('#{$src}.svg##{$family}') format('svg');
+    }
+  }
+}
+
+@mixin ellipsis() {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin selectionColor($color){
+    -webkit-touch-callout: $color;
+    -webkit-user-select: $color;
+    -khtml-user-select: $color;
+    -moz-user-select: $color;
+    -ms-user-select: $color;
+    user-select: $color;
+}

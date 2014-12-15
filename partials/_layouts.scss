@@ -1,0 +1,71 @@
+/* _layouts.scss */
+
+
+@mixin navigationList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    @include clearfix;
+
+    > li {
+        display: block;
+        float: left;
+    }
+}
+
+@mixin fullWidth {
+    position: relative; 
+    width: 100%; 
+    margin: 0 auto; 
+    z-index: 0; 
+
+    &:before { 
+        content: " "; 
+        display: block; 
+        position: absolute; 
+        width: 700%; 
+        background: inherit; 
+        border: inherit; 
+        height: 100%; 
+        left:-300%; 
+        z-index:-1; 
+    }
+    &:after { 
+        content: " "; 
+        display: block; 
+        position: absolute; 
+        top: 0; 
+        width: 100%; 
+        height: 100%; 
+        left: 0; 
+        right: 0; 
+        margin: auto;  
+        z-index: -1;
+    }
+}
+
+@mixin mobileMenuIcon($color: #000, $size: 5px) {
+  position: relative;
+  width: 30px;
+  height: $size*4;
+  cursor: pointer;
+  border-top: $size solid $color;
+  
+  &:after,
+  &:before {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 0;
+  }
+  
+  &:before { 
+    top: $size;
+    border-bottom: $size solid $color;
+  }
+  
+  &:after { 
+    top: $size*3;
+    border-top: $size solid $color;
+  }
+}
